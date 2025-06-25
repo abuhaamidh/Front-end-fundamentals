@@ -1,0 +1,39 @@
+
+
+
+functions are like a recipe
+consider that we are making tea, and we just servring it whenever it needed
+
+function makingTea(){
+ console.log("boil water")
+ console.log("Add tea leaves")
+ console.log("Add sugar")
+}
+makingTea()
+function greet(name){  
+console.log(`Hello ${name}`)
+ }
+greet("Abu")
+
+           ------------------------------------------------------------------------
+closures:
+Imagine a kid (inner function) playing in a room (function). The kid remembers all the toys (variables) in the room even after the door is closed (outer function is done).
+
+below example is the best for closures, we can highlight it as it is the data encapsulation
+
+function createCounter(start){
+    let count = start;
+    
+    return {
+        increament: function(){
+            count++;
+            return count;
+        },
+        getCount: function(){
+          return count;
+        }
+    }
+}
+const final = createCounter(1);
+console.log(final.increament()); // 2
+console.log(final.getCount());   // 2
