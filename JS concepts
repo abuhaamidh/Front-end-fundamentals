@@ -1,0 +1,97 @@
+
+
+
+functions are like a recipe
+consider that we are making tea, and we just servring it whenever it needed
+
+function makingTea(){
+ console.log("boil water")
+ console.log("Add tea leaves")
+ console.log("Add sugar")
+}
+makingTea()
+function greet(name){  
+console.log(`Hello ${name}`)
+ }
+greet("Abu")
+
+           ------------------------------------------------------------------------
+closures:
+Imagine a kid (inner function) playing in a room (function). The kid remembers all the toys (variables) in the room even after the door is closed (outer function is done).
+
+below example is the best for closures, we can highlight it as it is the data encapsulation
+
+function createCounter(start){
+    let count = start;
+    
+    return {
+        increament: function(){
+            count++;
+            return count;
+        },
+        getCount: function(){
+          return count;
+        }
+    }
+}
+const final = createCounter(1);
+console.log(final.increament()); // 2
+console.log(final.getCount());   // 2
+
+         -------------------------------------------------------------------------------
+
+callback()
+
+callback is like telling the kids that once the dish is done, you can come and have it.
+A function passed into another function and called back once after the outer function gets executed.
+
+function startBiryani(dish, callback){
+    console.log(`${dish} is getting ready`)
+    
+    setTimeout(() =>{
+        console.log("Please wait for 4 seconds, its getting ready");
+      callback()  
+    },4000)
+    
+}
+function doneCooking(){
+    console.log("Biryani is done, U can come and eat")  
+}
+startBiryani("Biryani", doneCooking)
+  
+}
+
+        ---------------------------------------------------------------------------------------
+
+Memoization
+
+Memoization is like Imagine you're doing math homework. You solve a hard question once and write the answer in your notebook.
+Next time the same question comes up, you just look it up instead of solving it again.
+
+That’s what memoization does:
+
+🧠 Remember results of function calls so you don’t recalculate them again.
+
+
+function memoizing(){
+    let store = new Map();
+    
+    return function factorial(n){
+        if(store.has(n)){
+            return store.get(n);
+        }
+        if(n < 0){
+            console.log("Factorial doesnt works with negative values")
+        }
+        if(n === 0) return 1;
+        
+        let result = 1;
+        for(let i = n; i > 1; i--){
+            result *= i;
+        } return store.set(n, result)
+    }
+    return result;
+}
+const memoized = memoizing();
+console.log(memoized(5))
+         ---------------------------------------------------------------------------------------
