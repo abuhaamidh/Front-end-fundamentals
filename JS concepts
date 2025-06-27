@@ -95,3 +95,22 @@ function memoizing(){
 const memoized = memoizing();
 console.log(memoized(5))
          ---------------------------------------------------------------------------------------
+
+Promises()
+
+That "later" is like a promise in computer programming, especially in JavaScript.
+You don't get the cookie right away: Your mom isn't giving it to you this second. She's promising to do something in the future.
+
+const getInput = new Promise((resolve, reject) =>{
+    const userDetail ={
+        name:"Abu",
+        age:"24",
+        role:"Front end developer"
+    }
+     const statusCode = 5000;
+     if(statusCode === 5000);
+     resolve(userDetail);
+})
+getInput
+.then((result) => console.log(result))
+.catch((err) => console.log("error"))
