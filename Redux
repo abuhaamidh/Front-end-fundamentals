@@ -1,0 +1,61 @@
+
+
+//first thing is to create store:
+
+import {createStore} from redux
+const store = createStore(reducer);
+
+//And we are defining the action creator:
+
+const initialState = {
+    balance: 0;
+};
+
+const deposit = (amount) =>{
+    return {
+        type :'DEPOSIT',
+        payload : amount;
+    }
+}
+
+const withdraw = (amount) =>{
+    return {
+        type:'WITHDRAW',
+        payload: amount;
+    }
+}
+
+<provider store ={store}>
+    <App />
+</provider>
+
+// create the reducer:
+
+const bankReducer = (state = initialState, action)=>{
+    switch(action.type) {
+    case 'DEPOSIT':
+        return{...state, balance: state.balance + action.payload};
+        
+    case "WITHDRAW":
+       return {...state, balance: state.balance - action.payload}
+       default:
+       return state;
+    }
+};
+
+// Using it in our APP.js
+
+// Two hooks needed
+import useSelector, useDispatch from redux
+
+const dispatch = useDispatch();
+const balance = useSelector((state) => state.balance)
+
+<div>
+<h1>Your balance is:{balance}</h1>
+<button onClick = {() => dispatch(deposit(5000))}>
+    click
+</button>
+<button onclick = {() => dispatch(withdraw(2000))}> click </button>
+</div>
+
