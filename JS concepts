@@ -114,3 +114,22 @@ const getInput = new Promise((resolve, reject) =>{
 getInput
 .then((result) => console.log(result))
 .catch((err) => console.log("error"))
+
+          -------------------------------------------------------------------------------------------
+
+Async Await():
+
+This is just the prettier way of writing the promise and we can make promise work under the hood with async and await
+
+
+
+async function getInput(){
+    try{
+        const reponse = await ("https://localhost5000/api/products");
+        const input = await response.json;
+        console.log(input)
+    }
+    catch(err){
+        console.log("Error")
+    }
+}
